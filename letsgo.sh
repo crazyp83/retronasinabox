@@ -147,6 +147,7 @@ download_retronas() {
 
             echo "Moving decompressed file to $download_location/vdisk1.img..."
             mv "$download_location/retronas.img" "$download_location/vdisk1.img"
+            zfs create -V 10G Data/VM/retronasvm
             qemu-img convert -O raw vdisk1.img > /dev/zvol/Data/retronasvm
             break
         else
@@ -220,6 +221,7 @@ download_retronas_no_gdown() {
 
             echo "Moving decompressed file to $download_location/vdisk1.img..."
             mv "$download_location/retronas.img" "$download_location/vdisk1.img"
+            zfs create -V 10G Data/VM/retronasvm
             qemu-img convert -O raw vdisk1.img > /dev/zvol/Data/retronasvm
             break
         else
