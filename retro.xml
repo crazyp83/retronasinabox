@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <domain type='kvm'>
-  <name>RetroNAS</name>
+  <name>RetroNAS-VM</name>
   <uuid>2162f2ee-9b5d-4726-b369-f15a6b58b2be</uuid>
   <metadata>
     <vmtemplate xmlns="unraid" name="Debian" icon="RetroNAS_Icon.png" os="debian"/>
@@ -38,7 +38,7 @@
   <on_reboot>restart</on_reboot>
   <on_crash>restart</on_crash>
   <devices>
-    <emulator>/usr/local/sbin/qemu</emulator>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='writeback'/>
       <source file='/mnt/user/domains2/RetroNAS3/vdisk1.img'/>
