@@ -5,7 +5,7 @@
 # Default values for the script. These will be overridden when the script is running in Docker
 # otherwise these standard variables will be used
 # Change these if needed or wanted only if running in userscripts. 
-standard_vm_name="RetroNAS"
+standard_vm_name="RetroNAS-VM"
 standard_domains_share="/mnt/user/domains"
 standard_RETRO_SHARE="/mnt/user/retronas"
 #REPLACE="no"
@@ -147,6 +147,7 @@ download_retronas() {
 
             echo "Moving decompressed file to $download_location/vdisk1.img..."
             mv "$download_location/retronas.img" "$download_location/vdisk1.img"
+            qemu-img convert -O raw vdisk1.img > /dev/zvol/Data/retronasvm
             break
         else
             echo "Failed to decompress file."
@@ -219,6 +220,7 @@ download_retronas_no_gdown() {
 
             echo "Moving decompressed file to $download_location/vdisk1.img..."
             mv "$download_location/retronas.img" "$download_location/vdisk1.img"
+            qemu-img convert -O raw vdisk1.img > /dev/zvol/Data/retronasvm
             break
         else
             echo "Failed to decompress file."
